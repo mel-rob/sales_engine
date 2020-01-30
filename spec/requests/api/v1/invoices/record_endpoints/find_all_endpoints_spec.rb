@@ -91,7 +91,7 @@ RSpec.describe 'Invoices API' do
     expect(invoices.count).to eq(2)
     expect(invoices.first['attributes']['id']).to eq(invoice_1.id)
     expect(invoices.last['attributes']['id']).to eq(invoice_2.id)
-  # end
+  end
 
   it 'can find all invoice records by updated_at date' do
     invoice_1 = create(:invoice, updated_at: "2020-01-29 14:53:59 UTC")

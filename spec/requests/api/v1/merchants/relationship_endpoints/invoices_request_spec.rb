@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'single merchant invoices page' do
   it 'shows all invoices for a specific merchant' do
     merchant = create(:merchant)
-    
+
     customer_1 = create(:customer)
     customer_2 = create(:customer)
 
@@ -15,8 +15,8 @@ RSpec.describe 'single merchant invoices page' do
 
     expect(response).to be_successful
 
-    items = JSON.parse(response.body)
+    invoices = JSON.parse(response.body)
 
-    expect(items['data'].length).to eq(3)
+    expect(invoices['data'].length).to eq(3)
   end
 end

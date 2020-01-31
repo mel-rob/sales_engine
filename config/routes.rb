@@ -46,8 +46,10 @@ Rails.application.routes.draw do
         root 'items#index'
         get '/find_all', to: 'find#index'
         get '/find', to: 'find#show'
-        get '/:id', to: 'items#show'
         get '/random', to: 'random#show'
+        get '/:id', to: 'items#show'
+        get '/:id/merchant', to: 'merchant#show'
+        get '/:id/invoice_items', to: 'invoice_items#index'
       end
     end
   end

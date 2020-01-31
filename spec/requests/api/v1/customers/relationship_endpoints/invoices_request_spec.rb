@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'single customer invoices page' do
+RSpec.describe 'single customer invoices request' do
   it 'shows all invoices for a specific customer' do
 
     customer_1 = create(:customer)

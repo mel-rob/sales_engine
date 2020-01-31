@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'single customer transactions page' do
+RSpec.describe 'single customer transactions request' do
   it 'shows all transactions for a specific customer' do
 
     customer_1 = create(:customer)

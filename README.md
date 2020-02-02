@@ -7,7 +7,7 @@ INSERT SCHEMA PHOTO HERE
 ## Setup
 
 1. Clone the latest version @ https://github.com/mel-rob/sales_engine  
-2. Navigate inside the `rails_engine` directory and run the following commands in your terminal.
+2. Navigate inside the `rales_engine` directory and run the following commands in your terminal.
 3. Run `bundle install` + `bundle update` + `bundle` to prep the gemfile.
 4. Run `rake db:create` + `rake db:migrate` to create the databases.
 5. Run `rake import_data:csv_to_db` to import csv data into the databases.

@@ -1,8 +1,12 @@
-# README
-
-INSERT SCHEMA PHOTO HERE
-
 # Sales Engine API
+
+Sales Engine is a RESTful API that provides access to 33 unique endpoints built from imported sales data.
+
+Technologies: Ruby on Rails, PostgreSQL, RSpec
+
+## Schema Design
+
+<img width="1037" alt="Screen Shot 2020-02-02 at 12 23 27 PM" src="https://user-images.githubusercontent.com/46657526/73613887-36445100-45b7-11ea-8634-3baa6a00bb21.png">
 
 ## Setup
 

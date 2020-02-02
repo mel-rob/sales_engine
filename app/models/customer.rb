@@ -14,4 +14,15 @@ class Customer < ApplicationRecord
     .order(total_transactions: :desc)
     .first
   end
+
+  def favorite_merchant
+    Merchant.find(invoices.joins(:transactions)
+    .merge(Transaction.successful)
+    .joins(:merchant)
+    .select('merchants.id')
+    .group('merchants.id')
+    .order('count(transactions.*) desc')
+    .first
+    .id)
+  end
 end

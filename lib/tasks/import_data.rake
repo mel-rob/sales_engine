@@ -1,7 +1,5 @@
 require 'csv'
 
-# Run `rake import_data:csv_to_db` to import CSV files
-
 namespace :import_data do
   desc "import data from CSV files"
   task csv_to_db: :environment do

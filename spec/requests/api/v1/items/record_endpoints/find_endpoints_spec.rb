@@ -27,10 +27,11 @@ RSpec.describe 'Items API' do
     expect(item['attributes']['id']).to eq(item_1.id)
   end
 
-  xit 'is case insensitive for name' do
-    item_1 = create(:item, name: "Item 1")
+  it 'is case insensitive for name' do
+    item_1 = create(:item)
+    name = item_1.name.downcase
 
-    get "/api/v1/items/find?name=#{item_1.name}"
+    get "/api/v1/items/find?name=#{name}"
 
     expect(response).to be_successful
 
@@ -52,10 +53,11 @@ RSpec.describe 'Items API' do
     expect(item['attributes']['id']).to eq(item_1.id)
   end
 
-  xit 'is case insensitive for description' do
-    item_1 = create(:item, description: "Item 1")
+  it 'is case insensitive for description' do
+    item_1 = create(:item)
+    description = item_1.description.downcase
 
-    get "/api/v1/items/find?description=#{item_1.description}"
+    get "/api/v1/items/find?description=#{description}"
 
     expect(response).to be_successful
 

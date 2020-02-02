@@ -51,9 +51,9 @@ RSpec.describe 'Transactions API' do
     expect(json_transaction['attributes']['id']).to eq(transaction.id)
   end
 
-  xit 'is case insensitive for result' do
+  it 'is case insensitive for result' do
     transaction = create(:transaction)
-    result = transaction.result.downcase
+    result = transaction.result.upcase
 
     get "/api/v1/transactions/find?result=#{result}"
 

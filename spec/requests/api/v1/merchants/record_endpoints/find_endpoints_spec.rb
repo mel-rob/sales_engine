@@ -27,7 +27,7 @@ RSpec.describe 'Merchants API' do
     expect(merchant['attributes']['name']).to eq(name)
   end
 
-  xit 'is case insensitive for name' do
+  it 'is case insensitive for name' do
     merchant = create(:merchant)
     name = merchant.name.downcase
 
@@ -37,7 +37,7 @@ RSpec.describe 'Merchants API' do
 
     json_merchant = JSON.parse(response.body)['data']
 
-    expect(json_merchant['attributes']['name']).to eq(name)
+    expect(json_merchant['attributes']['id']).to eq(merchant.id)
   end
 
   it 'it can find a single merchant based on created_at date' do

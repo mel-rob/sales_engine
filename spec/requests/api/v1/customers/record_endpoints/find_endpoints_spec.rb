@@ -27,6 +27,19 @@ RSpec.describe 'Customers API' do
     expect(customer['attributes']['first_name']).to eq(first_name)
   end
 
+  it 'is case insensitive for first name' do
+    customer = create(:customer)
+    name = customer.first_name.downcase
+
+    get "/api/v1/customers/find?name=#{name}"
+
+    expect(response).to be_successful
+
+    json_customer = JSON.parse(response.body)['data']
+
+    expect(json_customer['attributes']['id']).to eq(customer.id)
+  end
+
   it 'can find a single customer by its last name' do
     last_name = create(:customer).last_name
 
@@ -39,9 +52,9 @@ RSpec.describe 'Customers API' do
     expect(customer['attributes']['last_name']).to eq(last_name)
   end
 
-  xit 'is case insensitive for name' do
+  it 'is case insensitive for last name' do
     customer = create(:customer)
-    name = customer.name.downcase
+    name = customer.last_name.downcase
 
     get "/api/v1/customers/find?name=#{name}"
 
@@ -49,7 +62,7 @@ RSpec.describe 'Customers API' do
 
     json_customer = JSON.parse(response.body)['data']
 
-    expect(json_customer['attributes']['name']).to eq(name)
+    expect(json_customer['attributes']['id']).to eq(customer.id)
   end
 
   it 'it can find a single customer based on created_at date' do

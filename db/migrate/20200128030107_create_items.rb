@@ -1,8 +1,9 @@
 class CreateItems < ActiveRecord::Migration[5.2]
   def change
     create_table :items do |t|
-      t.string :name
-      t.string :description
+      enable_extension 'citext'
+      t.citext :name
+      t.citext :description
       t.numeric :unit_price
       t.datetime :created_at
       t.datetime :updated_at

@@ -30,17 +30,22 @@ RSpec.describe 'Items API' do
     expect(json_items.last['attributes']['id']).to eq(item_2.id)
   end
 
-  xit 'is case insensitive for name' do
-    item = create(:item)
-    name = name.name.downcase
+  it 'is case insensitive for name' do
+    item_1 = create(:item)
+    item_2 = create(:item)
 
-    get "/api/v1/items/find_all?name=#{name}"
+    name_1 = item_1.name.downcase
+    name_2 = item_2.name.downcase
+
+    get "/api/v1/items/find_all?name=#{name_1}"
 
     expect(response).to be_successful
 
-    json_item = JSON.parse(response.body)['data']
+    json_items = JSON.parse(response.body)['data']
 
-    expect(json_item['attributes']['name']).to eq(name)
+    expect(json_items.count).to eq(2)
+    expect(json_items.first['attributes']['id']).to eq(item_1.id)
+    expect(json_items.last['attributes']['id']).to eq(item_2.id)
   end
 
   it 'can find all item records by description' do
@@ -59,17 +64,22 @@ RSpec.describe 'Items API' do
     expect(json_items.last['attributes']['id']).to eq(item_2.id)
   end
 
-  xit 'is case insensitive for description' do
-    item = create(:item)
-    description = description.description.downcase
+  it 'is case insensitive for description' do
+    item_1 = create(:item)
+    item_2 = create(:item)
 
-    get "/api/v1/items/find_all?description=#{description}"
+    description_1 = item_1.description.downcase
+    description_2 = item_2.description.downcase
+
+    get "/api/v1/items/find_all?description=#{description_1}"
 
     expect(response).to be_successful
 
-    json_item = JSON.parse(response.body)['data']
+    json_items = JSON.parse(response.body)['data']
 
-    expect(json_item['attributes']['description']).to eq(description)
+    expect(json_items.count).to eq(2)
+    expect(json_items.first['attributes']['id']).to eq(item_1.id)
+    expect(json_items.last['attributes']['id']).to eq(item_2.id)
   end
 
   it 'can find all item records by unit price' do

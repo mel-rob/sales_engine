@@ -62,17 +62,22 @@ RSpec.describe 'Transactions API' do
     expect(transactions.last['attributes']['id']).to eq(transaction_2.id)
   end
 
-  xit 'is case insensitive for result' do
-    transaction = create(:transaction)
-    result = result.name.downcase
+  it 'is case insensitive for result' do
+    transaction_1 = create(:transaction)
+    transaction_2 = create(:transaction)
 
-    get "/api/v1/transactions/find_all?result=#{result}"
+    result_1 = transaction_1.result.upcase
+    result_2 = transaction_2.result.upcase
+
+    get "/api/v1/transactions/find_all?result=#{result_1}"
 
     expect(response).to be_successful
 
-    json_transaction = JSON.parse(response.body)['data']
+    json_transactions = JSON.parse(response.body)['data']
 
-    expect(json_transaction['attributes']['result']).to eq(result)
+    expect(json_transactions.count).to eq(2)
+    expect(json_transactions.first['attributes']['id']).to eq(transaction_1.id)
+    expect(json_transactions.last['attributes']['id']).to eq(transaction_2.id)
   end
 
   it 'can find all transaction records by invoice id' do

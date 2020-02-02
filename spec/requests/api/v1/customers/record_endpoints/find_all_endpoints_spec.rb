@@ -29,6 +29,24 @@ RSpec.describe 'Customers API' do
     expect(customers.last['attributes']['first_name']).to eq(customer_2.first_name)
   end
 
+  it 'is case insensitive for first name' do
+    customer_1 = create(:customer)
+    customer_2 = create(:customer)
+
+    name_1 = customer_1.first_name.downcase
+    name_2 = customer_2.first_name.downcase
+
+    get "/api/v1/customers/find_all?name=#{name_1}"
+
+    expect(response).to be_successful
+
+    json_customers = JSON.parse(response.body)['data']
+
+    expect(json_customers.count).to eq(2)
+    expect(json_customers.first['attributes']['id']).to eq(customer_1.id)
+    expect(json_customers.last['attributes']['id']).to eq(customer_2.id)
+  end
+
   it 'can find all customer records by last name' do
     customer_1 = create(:customer)
     customer_2 = create(:customer)
@@ -44,17 +62,22 @@ RSpec.describe 'Customers API' do
     expect(customers.last['attributes']['last_name']).to eq(customer_2.last_name)
   end
 
-  xit 'is case insensitive for name' do
-    customer = create(:customer)
-    name = customer.name.downcase
+  it 'is case insensitive for last name' do
+    customer_1 = create(:customer)
+    customer_2 = create(:customer)
 
-    get "/api/v1/customers/find_all?name=#{name}"
+    name_1 = customer_1.last_name.downcase
+    name_2 = customer_2.last_name.downcase
+
+    get "/api/v1/customers/find_all?name=#{name_1}"
 
     expect(response).to be_successful
 
-    json_customer = JSON.parse(response.body)['data']
+    json_customers = JSON.parse(response.body)['data']
 
-    expect(json_customer['attributes']['name']).to eq(name)
+    expect(json_customers.count).to eq(2)
+    expect(json_customers.first['attributes']['id']).to eq(customer_1.id)
+    expect(json_customers.last['attributes']['id']).to eq(customer_2.id)
   end
 
   it 'can find all customer records by created_at date' do

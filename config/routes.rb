@@ -11,13 +11,14 @@ Rails.application.routes.draw do
         get '/:id', to: 'merchants#show'
         get '/:id/items', to: 'items#index'
         get '/:id/invoices', to: 'invoices#index'
+        get '/:id/favorite_customer', to: 'customers#show'
       end
       namespace :customers do
         root 'customers#index'
         get '/find_all', to: 'find#index'
         get '/find', to: 'find#show'
         get '/random', to: 'random#show'
-        get '/:id', to: 'customers#show'
+        get '/:id', to: 'customers#show'  
         get '/:id/invoices', to: 'invoices#index'
         get '/:id/transactions', to: 'transactions#index'
       end

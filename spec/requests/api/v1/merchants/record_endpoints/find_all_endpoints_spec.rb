@@ -29,17 +29,22 @@ RSpec.describe 'Merchants API' do
     expect(merchants.last['attributes']['name']).to eq(merchant_2.name)
   end
 
-  xit 'is case insensitive for name' do
-    merchant = create(:merchant)
-    name = merchant.name.downcase
+  it 'is case insensitive for name' do
+    merchant_1 = create(:merchant)
+    merchant_2 = create(:merchant)
 
-    get "/api/v1/merchants/find_all?name=#{name}"
+    name_1 = merchant_1.name.downcase
+    name_2 = merchant_2.name.downcase
+
+    get "/api/v1/merchants/find_all?name=#{name_1}"
 
     expect(response).to be_successful
 
-    json_merchant = JSON.parse(response.body)['data']
+    json_merchants = JSON.parse(response.body)['data']
 
-    expect(json_merchant['attributes']['name']).to eq(name)
+    expect(json_merchants.count).to eq(2)
+    expect(json_merchants.first['attributes']['id']).to eq(merchant_1.id)
+    expect(json_merchants.last['attributes']['id']).to eq(merchant_2.id)
   end
 
   it 'can find all merchant records by created_at date' do

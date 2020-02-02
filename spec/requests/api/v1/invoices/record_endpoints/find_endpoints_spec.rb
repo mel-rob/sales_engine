@@ -51,9 +51,9 @@ RSpec.describe 'Invoices API' do
     expect(invoice['attributes']['status']).to eq(status)
   end
 
-  xit 'is case insensitive for status' do
+  it 'is case insensitive for status' do
     invoice = create(:invoice)
-    status = invoice.status.downcase
+    status = invoice.status.upcase
 
     get "/api/v1/invoices/find?status=#{status}"
 
@@ -61,7 +61,7 @@ RSpec.describe 'Invoices API' do
 
     json_invoice = JSON.parse(response.body)['data']
 
-    expect(json_invoice['attributes']['status']).to eq(status)
+    expect(json_invoice['attributes']['id']).to eq(invoice.id)
   end
 
   it 'it can find a single invoice based on created_at date' do

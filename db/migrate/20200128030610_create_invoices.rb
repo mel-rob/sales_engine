@@ -1,7 +1,8 @@
 class CreateInvoices < ActiveRecord::Migration[5.2]
   def change
     create_table :invoices do |t|
-      t.string :status
+      enable_extension 'citext'
+      t.citext :status
       t.datetime :created_at
       t.datetime :updated_at
       t.references :customer, foreign_key: true

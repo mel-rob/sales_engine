@@ -1,6 +1,6 @@
 # Sales Engine API
 
-Sales Engine is a RESTful API that provides access to 33 unique record, relationship, and business intelligence endpoints for multiple related resources using ActiveRecord and PostgreSQL.
+Sales Engine is a RESTful API that provides access to 49 unique record, relationship, and business intelligence endpoints for multiple related resources using ActiveRecord and PostgreSQL.
 
 Technologies: Ruby on Rails, ActiveRecord, PostgreSQL, RSpec
 
@@ -18,6 +18,9 @@ Technologies: Ruby on Rails, ActiveRecord, PostgreSQL, RSpec
 6. Run `rspec` to initiate the testing suite and verify the app is ready.
 7. Run `rails s` to initiate a local server on your machine.
 8. Open your browser and navigate to http://localhost:3000/api/v1 + the desired endpoint. All further described endpoints will be situated after this path.
+
+Ruby version: 2.5.3
+Rails version: 5.2.4.1
 
 ## Data Sets
 **There are 6 sets of data, each using a similar structure for endpoints**  

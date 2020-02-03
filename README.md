@@ -20,6 +20,7 @@ Technologies: Ruby on Rails, ActiveRecord, PostgreSQL, RSpec
 8. Open your browser and navigate to http://localhost:3000/api/v1 + the desired endpoint. All further described endpoints will be situated after this path.
 
 Ruby version: 2.5.3
+
 Rails version: 5.2.4.1
 
 ## Data Sets

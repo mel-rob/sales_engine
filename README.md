@@ -1,8 +1,8 @@
 # Sales Engine API
 
-Sales Engine is a RESTful API that provides access to 33 unique endpoints built from imported sales data.
+Sales Engine is a RESTful API that provides access to 33 unique record, relationship, and business intelligence endpoints for multiple related resources using ActiveRecord and PostgreSQL.
 
-Technologies: Ruby on Rails, PostgreSQL, RSpec
+Technologies: Ruby on Rails, ActiveRecord, PostgreSQL, RSpec
 
 ## Schema Design
 
